@@ -1,0 +1,77 @@
+.deck {
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  background-color: #1D1D1D;
+  margin:10px;
+  box-shadow: 0px 0px 4px 1px black;
+  border-radius: 10px;
+  float: left;
+}
+
+.display {
+  width:94%;
+  height: 90px;
+  padding:2% 3% 2% 3%;
+  padding-top: 20px;
+  background-color: #1B9BE0;
+  box-shadow:inset 0px 0px 2px 1px #171817;
+}
+
+.display h3 {
+  font: 15px "Ropa Sans";
+  color:white;
+  margin-bottom: 6px;
+}
+
+.display .now-playing {
+  font: 25px "Ropa Sans";
+  color:white;
+  line-height: 20px;
+  text-shadow: 0px 0px 5px #3BB4F5;
+}
+
+.control-list {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.control {
+  width:94%;
+  /*width: 60px;*/
+  height: auto;
+  /*height: 60px;*/
+  padding: 3%;
+  /*background-color: #1E1E1E;*/
+  background-color: #171817;
+  border-radius: 5px;
+  margin-top: 3px;
+  /*margin-left: 18px;*/
+  /*float: left;*/
+  overflow: hidden;
+  /*border-radius: 50%;*/
+  box-shadow:inset 0px 0px 2px 1px #111111;
+}
+
+.control .control-name  {
+  width: 50%;
+  height: auto;
+  /*padding-top: 20%;*/
+  float: left;
+  text-align: right;
+  color:#1B9BE0;
+  font: 16px "Ropa Sans";
+}
+
+.control .control-value {
+  width: 47%;
+  padding-left: 3%;
+  height: auto;
+  float: right;
+  text-align: center;
+  text-align: left;
+  color:#E01B6A;
+  font: 16px "Ropa Sans";
+}
