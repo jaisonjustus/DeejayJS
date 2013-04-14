@@ -18,7 +18,11 @@ Deejay.Player = function()  {
     notch : null,
     allpass : null
   };
-  
+
+}
+
+Deejay.Player.prototype.setAudio = function(audio)  {
+  this.core.audioBuffer = audio;
 }
 
 Deejay.Player.prototype._attachAudioCore = function(core) {
@@ -35,3 +39,11 @@ Deejay.Player.prototype.init = function(core) {
   this._attachAudioCore(core);
   this._attachAudioFilters();
 };
+
+Deejay.Player.prototype.play = function() {
+  this.core.source.buffer = this.core.audioBuffer;
+  this.core.source.loop = true;
+  this.core.source.connect(this.core.context.destination);
+  this.core.source.noteOn(0);
+
+}
