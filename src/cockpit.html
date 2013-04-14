@@ -44,7 +44,7 @@
         </div>
       </div>
       <div id="cockpit-deck-wrapper">
-        <div class="deck" data-deck-id="">
+<!--         <div class="deck" data-deck-id="">
           <div class="display">
             <h3>Now Playing..</h3>
             <span class="now-playing">The saints are coming</span>
@@ -536,8 +536,31 @@
             </div>
 
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="scripts/Config.js"></script>
+    <script type="text/javascript" src="scripts/Utility.js"></script>
+
+    <script type="text/javascript" src="scripts/AudioCore.js"></script>
+    <script type="text/javascript" src="scripts/AudioFX.js"></script>
+    <script type="text/javascript" src="scripts/Player.js"></script>
+    <script type="text/javascript" src="scripts/Deck.js"></script>
+    <script type="text/javascript">
+      var deckA = null;
+
+      deckA = new Deejay.Deck();
+      deckA.init();
+      deckA.render();
+
+      var deckB = null;
+
+      deckB = new Deejay.Deck();
+      deckB.init();
+      deckB.render();
+    </script>
+
   </body>
 </html>

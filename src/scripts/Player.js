@@ -1,6 +1,6 @@
 var Deejay = Deejay || {};
 
-var Player = Deejay.Player = function() {
+Deejay.Player = function()  {
 
   this.core = {
     context : null,
@@ -8,7 +8,7 @@ var Player = Deejay.Player = function() {
     audioBuffer : null
   };
 
-  this.filter = {
+  this.filters = {
     lowpass : null,
     highpass : null,
     bandpass : null,
@@ -18,32 +18,20 @@ var Player = Deejay.Player = function() {
     notch : null,
     allpass : null
   };
+  
+}
 
-  var attachAudioCore = function(core)  {
-    this.core = core;
-  };
+Deejay.Player.prototype._attachAudioCore = function(core) {
+  this.core = core;
+};
 
-  var attachAudioFilters = function() {
-    for(var filter in this.filters) {
-      this.filters[filter] = Deejay.process(
-        this.core.context,
-        Deejay.filters[filter],
-        0,0,0);
-    }
-  }
+Deejay.Player.prototype._attachAudioFilters = function()  {
+  for(var filter in this.filters) {
+    this.filters[filter] = Deejay.AudioFX.Filters.load(this.core.context, filter);
+  }  
+};
 
-  return {
-    init : function(core) {
-      attachAudioCore(core);
-      attachAudioFilters();
-    },
-
-    setTrack : function(audioBuffer) {
-      this.core.audioBuffer = audioBuffer;
-    },
-
-    play : function() {
-
-    }
-  }
+Deejay.Player.prototype.init = function(core) {
+  this._attachAudioCore(core);
+  this._attachAudioFilters();
 };

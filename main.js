@@ -24,6 +24,16 @@ loadTrack('http://localhost:8888/sources/loops/takabeat.wav');
 
 var finishLoading = function(buffer)  {
   source.buffer = buffer;
+  window.filter = context.createBiquadFilter();
+    window.filter.type = 2;
+    window.filter.frequency.value = 5000;
+    window.filter.Q = 0;
+    window.filter.gain = 0;
+
+
+
+  source.connect(window.filter);
+  window.filter.connect(context.destination);
   source.connect(context.destination);
-  source.noteOn(10);
+  source.noteOn(0);
 }

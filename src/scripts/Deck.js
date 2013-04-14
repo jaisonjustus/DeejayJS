@@ -1,27 +1,24 @@
 var Deejay = Deejay || {};
 
-var Deck = Deejay.Deck = function()  {
+Deejay.Deck = function()  {
+  this.core = null;
+};
 
-  /* Deck Properties */
-  this.prop = {};
+Deejay.Deck.prototype.loadEventBindings = function()  {
+  $(document)
+  .on("dragstart",".track-roll-entry", function()  {
+    console.log('dragging..');
+  });
+};
 
-  this.core = {};
+Deejay.Deck.prototype.loadHtml = function(request) {
+ $('#cockpit-deck-wrapper').append(request.target.response);
+};
 
-  var initializeDeck = function() {
-    this.core = new AudioCore();
-  }
+Deejay.Deck.prototype.init = function()  {
+  this.core = new Deejay.AudioCore();
+};
 
-  return {
-    init : function() {
-      initializeDeck();
-    },
-
-    loadEventBindings : function()  {
-      
-    },
-
-    render : function() {
-
-    }
-  };
-}
+Deejay.Deck.prototype.render = function() {
+  Deejay.Utility.loadTemplate('deck',this.loadHtml);
+};
