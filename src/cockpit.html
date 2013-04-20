@@ -21,7 +21,8 @@
       <div id="cockpit-deck-wrapper">
       </div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://localhost:3000/faye/client.js"></script>
 
     <script type="text/javascript" src="scripts/Config.js"></script>
     <script type="text/javascript" src="scripts/Utility.js"></script>
@@ -48,6 +49,13 @@
       deckB.init('deckB');
       deckB.render();
       deckB.loadEventBindings();
+
+
+      var client = new Faye.Client('http://localhost:3000/faye');
+      
+      client.subscribe('/high-pass-filter-listener', function(message) {
+        console.log(message);
+      });
 
     </script>
 

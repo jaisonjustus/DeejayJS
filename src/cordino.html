@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Cordino</title>
+    <style>
+      input[type=range] {
+        width: 100%;
+        height: 30px;
+        border-radius: 7px;
+        -webkit-appearance : none;
+        background-color: #2F2F2F;
+        padding: 10px;
+      }
+
+      input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background-color: red;
+        width: 40px;
+        height: 25px;
+        border-radius: 7px;
+        box-shadow: 0px 0px 1px 1px #171817;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="test">
+      <input type="range" class="control high-pass-filter" id="h" />
+    </span>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://localhost:3000/faye/client.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function()  {
+        
+        var client = new Faye.Client('http://localhost:3000/faye');
+
+        $(document)
+        .on('change', '#h', function()  {
+          client.publish('/high-pass-filter', {
+            deck : 'deck-a',
+            value : $(this).val()
+          });
+        });
+
+      });      
+    </script>
+  </body>
+</html>

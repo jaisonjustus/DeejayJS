@@ -1,0 +1,14 @@
+{
+  "name": "cordino",
+  "description": "Cordinator for Deejay Deck - Mobile Controller",
+  "homepage": "http://github.com/jaisonjustus/Deejay",
+  "dependencies": {
+    "faye" : ""
+  },
+  "author": {
+    "name": "jaison justus",
+    "email": "jaison.justus.lp@gmail.com"
+  },
+  "main": "cordino.js",
+  "version": "0.0.1"
+}
