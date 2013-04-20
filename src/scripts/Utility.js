@@ -55,7 +55,7 @@ Deejay.Utility = {
       type : 'GET',
       context : context,
       identifier : identifier,
-      url : Deejay.Config.App.url + 'sources/loops/' + file,
+      url : Deejay.Config.App.url + 'sounds/loops/' + file,
       responseType : 'arraybuffer',
       onLoad : callback
     });
