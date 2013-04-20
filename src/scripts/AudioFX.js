@@ -1,8 +1,16 @@
 var Deejay = Deejay || {};
 
+/**
+ * Module to handle the basic audio effect provided by webaudio api.
+ * @module AudioFX
+ * @namespace Deejay
+ */
 Deejay.AudioFX = {
 
+  /* Audio Filters. */
   Filters : {
+
+    /* Filter register. */
     filters : {
       lowpass : 0, 
       highpass : 1,
@@ -14,6 +22,14 @@ Deejay.AudioFX = {
       allpass : 7
     },
 
+    /**
+     * Method to load the filter to the deck.
+     * @method load
+     * @access public
+     * @param object context
+     * @param string filterName
+     * @return object
+     */
     load : function(context, filterName)  {
       filter = context.createBiquadFilter();
       filter.type = this.filters[filterName];
@@ -21,7 +37,9 @@ Deejay.AudioFX = {
     }
   },
 
+  /* Audio Panners. */
   Pan : {},
 
+  /* Audio Compressor. */
   Compressor : {}
 };

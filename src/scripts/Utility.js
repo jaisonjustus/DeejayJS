@@ -1,9 +1,18 @@
 var Deejay = Deejay || {};
 
+/**
+ * Utility Box for Deejay.
+ * @module Utility
+ * @namespace Deejay
+ */
 Deejay.Utility = {
-
-  DOMParser : new DOMParser(),
   
+  /**
+   * Ajax implementation.
+   * @method ajax
+   * @access public
+   * @param object options
+   */
   ajax : function(options) {
     var request = new XMLHttpRequest();
     request.open(options.type, options.url, true);
@@ -14,6 +23,14 @@ Deejay.Utility = {
     request.send();
   },
 
+  /**
+   * helper to load html templates.
+   * @method loadTemplate
+   * @access public
+   * @param string name
+   * @param object callback
+   * @param object context
+   */
   loadTemplate : function(name, callback, context) {
     this.ajax({
       type : 'GET',
@@ -24,6 +41,15 @@ Deejay.Utility = {
     });
   },
 
+  /**
+   * helper to load tracks.
+   * @method loadTrack
+   * @access public
+   * @param string file
+   * @param object callback
+   * @param int identifier
+   * @param object context
+   */
   loadTrack : function(file, callback, identifier, context)  {
     this.ajax({
       type : 'GET',
