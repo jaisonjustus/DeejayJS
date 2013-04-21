@@ -2,29 +2,49 @@
   <head>
     <title>Cordino</title>
     <style>
+      body  {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background-image: url(images/background-strip-2.png);
+      }
+
+      #test {
+        width:460px;
+        padding:20px;
+        height: 500px;
+        background-color: #171817;
+        overflow: hidden;
+        margin: 100px 0;
+      }
       input[type=range] {
-        width: 100%;
-        height: 30px;
+        width: 300px;
+        height: 50px;
         border-radius: 7px;
         -webkit-appearance : none;
-        background-color: #2F2F2F;
-        padding: 10px;
+        background-image: url(images/slider.png);
+        box-shadow:inset 0px 0px 3px 3px #171817;
+
+
+        float: left;
+        display: inline-block;
       }
 
       input[type='range']::-webkit-slider-thumb {
         -webkit-appearance: none;
-        background-color: red;
-        width: 40px;
-        height: 25px;
+        background-color: #171817;
+        background-image: url(images/knob.png);
+        width: 25px;
+        height: 50px;
         border-radius: 7px;
-        box-shadow: 0px 0px 1px 1px #171817;
+        box-shadow: 0px 0px 3px 3px #171817;
       }
     </style>
   </head>
   <body>
-    <span id="test">
+    <div id="test">
       <input type="range" class="control high-pass-filter" id="h" />
-    </span>
+    </div>
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://localhost:3000/faye/client.js"></script>
