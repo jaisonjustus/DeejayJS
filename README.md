@@ -10,6 +10,7 @@ DeejayJS is a Entertainment application. Build using HTML5 WebAudio API and java
 - [HTML5 Rocks WebAudio API Blog Post](http://www.html5rocks.com/en/tutorials/webaudio/intro/)
 - [WebAudio API W3C](https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html)
 - [WebAudio API book by Boris](http://chimera.labs.oreilly.com/books/1234000001552)
+- [WebAudio Demo by Chris Wilson](http://webaudiodemos.appspot.com/)
 - [Stuart Memo Github](https://github.com/stuartmemo)
 - [Stuart Memo Webpage](http://stuartmemo.com/)
 - [Faye - PubSub for web](http://faye.jcoglan.com/)
