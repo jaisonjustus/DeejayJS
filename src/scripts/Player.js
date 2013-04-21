@@ -26,6 +26,7 @@ Deejay.Player = function()  {
     allpass : null
   };
 
+  this.route = {};
 };
 
 /**
@@ -37,6 +38,7 @@ Deejay.Player = function()  {
 Deejay.Player.prototype.init = function(core) {
   this._attachAudioCore(core);
   this._attachAudioFilters();
+  this._createAudioRoute();
 };
 
 /**
@@ -68,6 +70,79 @@ Deejay.Player.prototype._attachAudioFilters = function()  {
   for(var filter in this.filters) {
     this.filters[filter] = Deejay.AudioFX.Filters.load(this.core.context, filter);
   }  
+};
+
+/**
+ * Create an audio route with all filters, panners etc are connected in serial.
+ * @method _createAudioRoute
+ * @access private
+ */
+Deejay.Player.prototype._createAudioRoute = function()  {
+  this._prepareAudioRouteDescriptor();
+  this._initializeRoute(true);
+};
+
+/**
+ * Method to prepare the Route descriptor with components status(active or not).
+ * @method _prepareAudioRouteDescriptor
+ * @access private
+ */
+Deejay.Player.prototype._prepareAudioRouteDescriptor = function() {
+  this.route['source'] = true;
+  for(var filter in this.filters) {
+    this.route[filter] = false;
+  }
+  this.route['destination'] = true;
+};
+
+/**
+ * Initialize the audio route with the active components in the route 
+ * descriptor. with forceNew flag, it create new|fresh audio route forcfully
+ * by ignoring the active components in the route descriptor.
+ * @method _initializeRoute
+ * @access private
+ * @param boolean forceNew
+ */
+Deejay.Player.prototype._initializeRoute = function(forceNew) {
+  if(forceNew)  {
+    this.core.source.connect(this.core.context.destination);
+  }else {
+    var lastNode = null;
+
+    for(var component in this.route)  {
+      console.log(component);
+      if(component === 'source')  {
+        lastNode = this.core.source;
+      }else if(component === 'destination') {
+        lastNode.connect(this.core.context.destination);
+      }else {
+        if(this.filters.hasOwnProperty(component))  {
+          if(this.route[component]) {
+            lastNode.connect(this.filters[component]);
+            lastNode = this.filters[component];
+          }
+        }else {
+          // implement the other filters.
+        }
+      }
+    }
+  }
+};
+
+/**
+ * Method to modify the current audio route by adding and remove effects.
+ * action parameter is to preform add(true) or remove(false) components 
+ * from the route.
+ * @method _modifyAudioRoute
+ * @access private
+ * @param string componentName
+ * @param boolean action
+ */
+Deejay.Player.prototype._modifyAudioRoute = function(componentName, action)  {
+  if(this.route.hasOwnProperty(componentName) && typeof(action) === 'boolean') {
+    this.route[componentName] = action;
+  }
+  this._initializeRoute();
 };
 
 /**

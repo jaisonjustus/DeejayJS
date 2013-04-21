@@ -73,8 +73,10 @@ Deejay.Deck.prototype.setTrack = function(track)  {
 
   that.core.audioBuffer = null;
   this.core.context.decodeAudioData(track, function(buffer) {
+    //console.log(track, buffer);
     that.core.audioBuffer = buffer;
   },function()  {
+    console.log(that.core.audioBuffer);
     that.player.setAudio(that.core.audioBuffer);
   });
 }
