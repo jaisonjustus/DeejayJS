@@ -33,27 +33,7 @@ Deejay.Deck.prototype.init = function(deckId)  {
  * @method loadEventBindings
  * @access public
  */
-Deejay.Deck.prototype.loadEventBindings = function()  {
-  var that = this;
-  $(document)
-
-  .on('click', '#' + this.deckId + ' .display', function() {
-    var deckStatusSelector = $(this).find('.deck-status');
-
-    if(deckStatusSelector.attr('data-select-track') == '0') {
-      $(this).css({ 'backgroundColor' : 'green' });
-      deckStatusSelector.html('Select Track...');
-      deckStatusSelector.attr('data-select-track', '1');
-      Deejay.TrackRoll.setCurrentDeck(that);
-    }else {
-      $(this).css({ 'backgroundColor' : '#1B9BE0' });
-      deckStatusSelector.html('Current Track...');  
-      deckStatusSelector.attr('data-select-track', '0');
-      Deejay.TrackRoll.setCurrentDeck(null);
-    }
-    
-  });
-};
+Deejay.Deck.prototype.loadEventBindings = function()  {};
 
 /**
  * Method to handle change the display state in the deck.
