@@ -43,14 +43,15 @@
 
       var client = new Faye.Client('http://localhost:3000/faye');
       
-      client.subscribe('/high-pass-filter-listener', function(message) {
+      client.subscribe('/filter/highpass/listener', function(message) {
         console.log(message);
       });
 
 
       /** TESTING **/
       function test() {
-        deckA.setTrack(Deejay.TrackRoll.audioBuffers['takabeat']);
+        //deckA.setTrack(Deejay.TrackRoll.audioBuffers['takabeat']);
+        client.publish('/high-pass-filter', { 'value' : 'this is a test' });
       }
     </script>
 

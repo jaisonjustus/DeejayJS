@@ -6,5 +6,5 @@ bayeux.listen(3000);
 
 
 bayeux.getClient().subscribe('/high-pass-filter', function(response) {
-  bayeux.getClient().publish('/high-pass-filter-listener', response );
+  bayeux.getClient().publish('/filter/highpass/listener', response );
 });
