@@ -2,6 +2,7 @@
 
 angular.module('Deejay')
 	
-	.controller('PlayoutController', function()	{
+	.controller('PlayoutController', function($route)	{
+		// console.log($route.current.locals.trackData);
 		console.log('playout controller');
 	});
