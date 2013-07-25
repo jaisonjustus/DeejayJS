@@ -9,7 +9,12 @@ angular.module('Deejay', [])
 			/* Playout route */
 			.when('/', {
 				templateUrl : 'views/playout.html',
-				controller : 'PlayoutController'
+				controller : 'PlayoutController',
+				resolve : {
+					trackData : function(Track)	{
+						return Track.getTracks();
+					}
+				}
 			})
 
 			/* Default Routing */
