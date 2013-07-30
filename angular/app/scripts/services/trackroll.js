@@ -8,7 +8,8 @@ angular.module('Deejay')
 
 		_tracksList = {
 			takabeat : 'takabeat.wav',
-			rainyday : 'rainyday.wav'
+			rainyday : 'rainyday.wav',
+			test : 'test.mp3'
 		};
 
 		_iterateAndLoadTrackList = function()	{
@@ -23,7 +24,7 @@ angular.module('Deejay')
 
 				trackListCount++;
 
-	      $http({ method : 'GET', url : url, identifier : track, })
+	      $http({ method : 'GET', url : url, identifier : track, responseType : 'arraybuffer' })
 	      	.success(function(data, status, headers, config)	{
 	      		_audioBuffers[config.identifier] = data;
 	      		

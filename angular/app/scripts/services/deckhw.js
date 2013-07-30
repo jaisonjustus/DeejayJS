@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('Deejay')
-	.factory('DeckHardware', function(FX)	{
+	.factory('DeckHardware', function(FX, $q)	{
 
 		var hardware = function()  {
 
@@ -56,17 +56,23 @@ angular.module('Deejay')
 		 * @param arrayBuffer track
 		 */
 		hardware.prototype.setTrack = function(track)  {
-		  var that = this;
+		  var that = this,
+		  		defered = $q.defer();
 
-		  that.core.audioBuffer = null;
-
-		  this.core.context.decodeAudioData(track, function(buffr) {
-		    console.log(track, buffer);
-		    // that.core.audioBuffer = buffr;
-		  },function()  {
-		    console.log(that.core.audioBuffer);
-		    that.player.setAudio(that.core.audioBuffer);
+		  this.core.audioBuffer = null;
+		  this.core.context.decodeAudioData(track, function(buffer) {
+		    // that.core.audioBuffer = buffer;
+		    console.log("1.", buffer);
+		    // defered.resolve();
+		  },function(buffer)  {
+		  	console.log("2.", buffer);
+		  	// that.core.audioBuffer = buffer;
+		  	that.setAudio(buffer);
+		    // console.log(that.core.audioBuffer);
+		    // that.player.setAudio(that.core.audioBuffer);
 		  });
+
+		  return defered.promise;
 		}
 
 		/**

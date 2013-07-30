@@ -6,9 +6,23 @@ angular.module('Deejay')
 		var dir = {
 			restrict : 'E',
 			replace : true,
+			transclude : true, 
 			templateUrl : 'views/deck.html',
-			link : function(scope, element, attrs)	{
+			scope : {
+				buffer : '=buffer'
+			},
+			controller : function($scope, Core, DeckHardware)	{
+				var core, hardware;
 
+				core = new Core();
+				hardware = new DeckHardware();
+				hardware.init(core);
+				// console.log($scope.buffer);
+				var cassette = hardware.setTrack($scope.buffer['test']);
+				// cassette
+				// 	.then(function()	{
+						hardware.play();
+					// });
 			}
 		};
 
