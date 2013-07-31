@@ -128,7 +128,7 @@ angular.module('Deejay')
 		    var lastNode = null;
 
 		    for(var component in this.route)  {
-		      console.log(component);
+		      // console.log(component);
 		      if(component === 'source')  {
 		        lastNode = this.core.source;
 		      }else if(component === 'destination') {
