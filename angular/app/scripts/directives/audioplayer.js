@@ -17,12 +17,12 @@ angular.module('Deejay')
 				core = new Core();
 				hardware = new DeckHardware();
 				hardware.init(core);
-				// console.log($scope.buffer);
-				var cassette = hardware.setTrack($scope.buffer['test']);
-				// cassette
-				// 	.then(function()	{
+				
+				hardware.setTrack($scope.buffer['test'])
+					.then(function()	{
 						hardware.play();
-					// });
+					});
+					// hardware.play();
 			}
 		};
 

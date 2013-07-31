@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('Deejay')
-	.factory('DeckHardware', function(FX, $q)	{
+	.factory('DeckHardware', function(FX, $q, $rootScope)	{
 
 		var hardware = function()  {
 
@@ -61,15 +61,9 @@ angular.module('Deejay')
 
 		  this.core.audioBuffer = null;
 		  this.core.context.decodeAudioData(track, function(buffer) {
-		    // that.core.audioBuffer = buffer;
-		    console.log("1.", buffer);
-		    // defered.resolve();
-		  },function(buffer)  {
-		  	console.log("2.", buffer);
-		  	// that.core.audioBuffer = buffer;
-		  	that.setAudio(buffer);
-		    // console.log(that.core.audioBuffer);
-		    // that.player.setAudio(that.core.audioBuffer);
+		    that.setAudio(buffer);
+		    defered.resolve();
+		    $rootScope.$apply();
 		  });
 
 		  return defered.promise;
